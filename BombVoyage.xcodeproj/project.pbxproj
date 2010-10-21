@@ -1,0 +1,483 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 45;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1D3623260D0F684500981E51 /* BombVoyageAppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* BombVoyageAppDelegate.mm */; };
+		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
+		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
+		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
+		288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765A40DF7441C002DB57D /* CoreGraphics.framework */; };
+		2899E5220DE3E06400AC0155 /* BombVoyageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2899E5210DE3E06400AC0155 /* BombVoyageViewController.xib */; };
+		28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow.xib */; };
+		28D7ACF80DDB3853001CB0EB /* BombVoyageViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 28D7ACF70DDB3853001CB0EB /* BombVoyageViewController.mm */; };
+		D1253771126D58E9004996AD /* BVGameViewCtrl.mm in Sources */ = {isa = PBXBuildFile; fileRef = D1253770126D58E9004996AD /* BVGameViewCtrl.mm */; };
+		D1253774126D5B0E004996AD /* BVGameObject.mm in Sources */ = {isa = PBXBuildFile; fileRef = D1253773126D5B0E004996AD /* BVGameObject.mm */; };
+		D12537A5126D61CA004996AD /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D12537A4126D61CA004996AD /* OpenGLES.framework */; };
+		D12537F2126D69A6004996AD /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D12537F1126D69A6004996AD /* QuartzCore.framework */; };
+		D12FDDD312576B3600D355BD /* MainMenuViewCtrl.mm in Sources */ = {isa = PBXBuildFile; fileRef = D12FDDD212576B3600D355BD /* MainMenuViewCtrl.mm */; };
+		D12FDDE2125770B200D355BD /* UnderConstViewCtrl.mm in Sources */ = {isa = PBXBuildFile; fileRef = D12FDDE1125770B200D355BD /* UnderConstViewCtrl.mm */; };
+		D12FDDFC12577DEF00D355BD /* MapModeViewCtrl.mm in Sources */ = {isa = PBXBuildFile; fileRef = D12FDDFB12577DEF00D355BD /* MapModeViewCtrl.mm */; };
+		D12FDDFE1257809600D355BD /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D12FDDFD1257809600D355BD /* MapKit.framework */; };
+		D12FDE401257855E00D355BD /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D12FDE3F1257855E00D355BD /* CoreLocation.framework */; };
+		D13C5DEB126F09BE00A90E50 /* BVGameCore.mm in Sources */ = {isa = PBXBuildFile; fileRef = D13C5DEA126F09BE00A90E50 /* BVGameCore.mm */; };
+		D187C258126D4E02004D90BC /* MyGLBaseView.mm in Sources */ = {isa = PBXBuildFile; fileRef = D187C257126D4E02004D90BC /* MyGLBaseView.mm */; };
+		D190B9F5126DD2E000301421 /* sample_bomb.png in Resources */ = {isa = PBXBuildFile; fileRef = D190B9F4126DD2E000301421 /* sample_bomb.png */; };
+		D190BA05126DD5DB00301421 /* splash.png in Resources */ = {isa = PBXBuildFile; fileRef = D190BA04126DD5DB00301421 /* splash.png */; };
+		D19611571259B5D600746673 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = D19611561259B5D600746673 /* Default.png */; };
+		D1A560AA12705A6F00F82803 /* blastSound.wav in Resources */ = {isa = PBXBuildFile; fileRef = D1A560A812705A6F00F82803 /* blastSound.wav */; };
+		D1A560AB12705A6F00F82803 /* gokiVoice.wav in Resources */ = {isa = PBXBuildFile; fileRef = D1A560A912705A6F00F82803 /* gokiVoice.wav */; };
+		D1A560C912705C9500F82803 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1A560C812705C9500F82803 /* AVFoundation.framework */; };
+		D1BF5F1A12582A4F00F93116 /* bomb_body_0.png in Resources */ = {isa = PBXBuildFile; fileRef = D1BF5F1612582A4F00F93116 /* bomb_body_0.png */; };
+		D1BF5F1B12582A4F00F93116 /* bomb_display_0.png in Resources */ = {isa = PBXBuildFile; fileRef = D1BF5F1712582A4F00F93116 /* bomb_display_0.png */; };
+		D1BF5F1C12582A4F00F93116 /* bomb_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = D1BF5F1812582A4F00F93116 /* bomb_icon.png */; };
+		D1BF5F1D12582A4F00F93116 /* bomb_red_0.png in Resources */ = {isa = PBXBuildFile; fileRef = D1BF5F1912582A4F00F93116 /* bomb_red_0.png */; };
+		D1BF5F3212582A6500F93116 /* goki_damage_0.png in Resources */ = {isa = PBXBuildFile; fileRef = D1BF5F1E12582A6500F93116 /* goki_damage_0.png */; };
+		D1BF5F3312582A6500F93116 /* goki_damage_1.png in Resources */ = {isa = PBXBuildFile; fileRef = D1BF5F1F12582A6500F93116 /* goki_damage_1.png */; };
+		D1BF5F3512582A6500F93116 /* goki_kyoro_l_0.png in Resources */ = {isa = PBXBuildFile; fileRef = D1BF5F2112582A6500F93116 /* goki_kyoro_l_0.png */; };
+		D1BF5F3612582A6500F93116 /* goki_kyoro_l_1.png in Resources */ = {isa = PBXBuildFile; fileRef = D1BF5F2212582A6500F93116 /* goki_kyoro_l_1.png */; };
+		D1BF5F3712582A6500F93116 /* goki_kyoro_l_2.png in Resources */ = {isa = PBXBuildFile; fileRef = D1BF5F2312582A6500F93116 /* goki_kyoro_l_2.png */; };
+		D1BF5F3812582A6500F93116 /* goki_kyoro_l_3.png in Resources */ = {isa = PBXBuildFile; fileRef = D1BF5F2412582A6500F93116 /* goki_kyoro_l_3.png */; };
+		D1BF5F3912582A6500F93116 /* goki_kyoro_r_0.png in Resources */ = {isa = PBXBuildFile; fileRef = D1BF5F2512582A6500F93116 /* goki_kyoro_r_0.png */; };
+		D1BF5F3A12582A6500F93116 /* goki_kyoro_r_1.png in Resources */ = {isa = PBXBuildFile; fileRef = D1BF5F2612582A6500F93116 /* goki_kyoro_r_1.png */; };
+		D1BF5F3B12582A6500F93116 /* goki_kyoro_r_2.png in Resources */ = {isa = PBXBuildFile; fileRef = D1BF5F2712582A6500F93116 /* goki_kyoro_r_2.png */; };
+		D1BF5F3C12582A6500F93116 /* goki_kyoro_r_3.png in Resources */ = {isa = PBXBuildFile; fileRef = D1BF5F2812582A6500F93116 /* goki_kyoro_r_3.png */; };
+		D1BF5F4012582A6500F93116 /* search_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = D1BF5F2C12582A6500F93116 /* search_icon.png */; };
+		D1BF5F4112582A6500F93116 /* splash_0.png in Resources */ = {isa = PBXBuildFile; fileRef = D1BF5F2D12582A6500F93116 /* splash_0.png */; };
+		D1BF5F4212582A6500F93116 /* splash_1.png in Resources */ = {isa = PBXBuildFile; fileRef = D1BF5F2E12582A6500F93116 /* splash_1.png */; };
+		D1BF5F4312582A6500F93116 /* splash_2.png in Resources */ = {isa = PBXBuildFile; fileRef = D1BF5F2F12582A6500F93116 /* splash_2.png */; };
+		D1BF5F4412582A6500F93116 /* splash_3.png in Resources */ = {isa = PBXBuildFile; fileRef = D1BF5F3012582A6500F93116 /* splash_3.png */; };
+		D1F84010126D7AC900897890 /* graphicUtil.mm in Sources */ = {isa = PBXBuildFile; fileRef = D1F8400F126D7AC900897890 /* graphicUtil.mm */; };
+		D1F84038126D80B100897890 /* Particle.mm in Sources */ = {isa = PBXBuildFile; fileRef = D1F84037126D80B100897890 /* Particle.mm */; };
+		D1F84085126D8F2E00897890 /* test.png in Resources */ = {isa = PBXBuildFile; fileRef = D1F84084126D8F2E00897890 /* test.png */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		1D3623240D0F684500981E51 /* BombVoyageAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BombVoyageAppDelegate.h; sourceTree = "<group>"; };
+		1D3623250D0F684500981E51 /* BombVoyageAppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = BombVoyageAppDelegate.mm; sourceTree = "<group>"; };
+		1D6058910D05DD3D006BFB54 /* BombVoyage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BombVoyage.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		288765A40DF7441C002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		2899E5210DE3E06400AC0155 /* BombVoyageViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BombVoyageViewController.xib; sourceTree = "<group>"; };
+		28AD733E0D9D9553002E5188 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
+		28D7ACF60DDB3853001CB0EB /* BombVoyageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BombVoyageViewController.h; sourceTree = "<group>"; };
+		28D7ACF70DDB3853001CB0EB /* BombVoyageViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = BombVoyageViewController.mm; sourceTree = "<group>"; };
+		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		32CA4F630368D1EE00C91783 /* BombVoyage_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BombVoyage_Prefix.pch; sourceTree = "<group>"; };
+		8D1107310486CEB800E47090 /* BombVoyage-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "BombVoyage-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+		D125376F126D58E9004996AD /* BVGameViewCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BVGameViewCtrl.h; path = Classes/BVGameViewCtrl.h; sourceTree = "<group>"; };
+		D1253770126D58E9004996AD /* BVGameViewCtrl.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = BVGameViewCtrl.mm; path = Classes/BVGameViewCtrl.mm; sourceTree = "<group>"; };
+		D1253772126D5B0E004996AD /* BVGameObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BVGameObject.h; path = Game/BVGameObject.h; sourceTree = "<group>"; };
+		D1253773126D5B0E004996AD /* BVGameObject.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = BVGameObject.mm; path = Game/BVGameObject.mm; sourceTree = "<group>"; };
+		D12537A4126D61CA004996AD /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		D12537F1126D69A6004996AD /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = /System/Library/Frameworks/QuartzCore.framework; sourceTree = "<absolute>"; };
+		D12FDD7D12575BE700D355BD /* Define.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Define.h; sourceTree = "<group>"; };
+		D12FDDD01257694600D355BD /* AnimationNames.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AnimationNames.h; path = Classes/AnimationNames.h; sourceTree = "<group>"; };
+		D12FDDD112576B3600D355BD /* MainMenuViewCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainMenuViewCtrl.h; path = Classes/MainMenuViewCtrl.h; sourceTree = "<group>"; };
+		D12FDDD212576B3600D355BD /* MainMenuViewCtrl.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = MainMenuViewCtrl.mm; path = Classes/MainMenuViewCtrl.mm; sourceTree = "<group>"; };
+		D12FDDE0125770B200D355BD /* UnderConstViewCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UnderConstViewCtrl.h; path = Classes/UnderConstViewCtrl.h; sourceTree = "<group>"; };
+		D12FDDE1125770B200D355BD /* UnderConstViewCtrl.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = UnderConstViewCtrl.mm; path = Classes/UnderConstViewCtrl.mm; sourceTree = "<group>"; };
+		D12FDDE71257740400D355BD /* MessageText.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MessageText.h; path = Classes/MessageText.h; sourceTree = "<group>"; };
+		D12FDDF3125779C800D355BD /* EventNames.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EventNames.h; path = Classes/EventNames.h; sourceTree = "<group>"; };
+		D12FDDFA12577DEF00D355BD /* MapModeViewCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MapModeViewCtrl.h; path = Classes/MapModeViewCtrl.h; sourceTree = "<group>"; };
+		D12FDDFB12577DEF00D355BD /* MapModeViewCtrl.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = MapModeViewCtrl.mm; path = Classes/MapModeViewCtrl.mm; sourceTree = "<group>"; };
+		D12FDDFD1257809600D355BD /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		D12FDE3F1257855E00D355BD /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		D13C5DE9126F09BE00A90E50 /* BVGameCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BVGameCore.h; path = Game/BVGameCore.h; sourceTree = "<group>"; };
+		D13C5DEA126F09BE00A90E50 /* BVGameCore.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = BVGameCore.mm; path = Game/BVGameCore.mm; sourceTree = "<group>"; };
+		D187C256126D4E02004D90BC /* MyGLBaseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyGLBaseView.h; path = Game/MyGLBaseView.h; sourceTree = "<group>"; };
+		D187C257126D4E02004D90BC /* MyGLBaseView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = MyGLBaseView.mm; path = Game/MyGLBaseView.mm; sourceTree = "<group>"; };
+		D190B9F4126DD2E000301421 /* sample_bomb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = sample_bomb.png; path = Resources/Images/sample_bomb.png; sourceTree = "<group>"; };
+		D190BA04126DD5DB00301421 /* splash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = splash.png; path = Resources/Images/splash.png; sourceTree = "<group>"; };
+		D19611561259B5D600746673 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = ../../../Dropbox/Default.png; sourceTree = SOURCE_ROOT; };
+		D1A560A812705A6F00F82803 /* blastSound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = blastSound.wav; path = ../../../Music/Electribe/blastSound.wav; sourceTree = SOURCE_ROOT; };
+		D1A560A912705A6F00F82803 /* gokiVoice.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = gokiVoice.wav; path = ../../../Music/Electribe/gokiVoice.wav; sourceTree = SOURCE_ROOT; };
+		D1A560C812705C9500F82803 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		D1BF5F1612582A4F00F93116 /* bomb_body_0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bomb_body_0.png; path = Resources/Images/bomb_body_0.png; sourceTree = "<group>"; };
+		D1BF5F1712582A4F00F93116 /* bomb_display_0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bomb_display_0.png; path = Resources/Images/bomb_display_0.png; sourceTree = "<group>"; };
+		D1BF5F1812582A4F00F93116 /* bomb_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bomb_icon.png; path = Resources/Images/bomb_icon.png; sourceTree = "<group>"; };
+		D1BF5F1912582A4F00F93116 /* bomb_red_0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bomb_red_0.png; path = Resources/Images/bomb_red_0.png; sourceTree = "<group>"; };
+		D1BF5F1E12582A6500F93116 /* goki_damage_0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = goki_damage_0.png; path = Resources/Images/goki_damage_0.png; sourceTree = "<group>"; };
+		D1BF5F1F12582A6500F93116 /* goki_damage_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = goki_damage_1.png; path = Resources/Images/goki_damage_1.png; sourceTree = "<group>"; };
+		D1BF5F2112582A6500F93116 /* goki_kyoro_l_0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = goki_kyoro_l_0.png; path = Resources/Images/goki_kyoro_l_0.png; sourceTree = "<group>"; };
+		D1BF5F2212582A6500F93116 /* goki_kyoro_l_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = goki_kyoro_l_1.png; path = Resources/Images/goki_kyoro_l_1.png; sourceTree = "<group>"; };
+		D1BF5F2312582A6500F93116 /* goki_kyoro_l_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = goki_kyoro_l_2.png; path = Resources/Images/goki_kyoro_l_2.png; sourceTree = "<group>"; };
+		D1BF5F2412582A6500F93116 /* goki_kyoro_l_3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = goki_kyoro_l_3.png; path = Resources/Images/goki_kyoro_l_3.png; sourceTree = "<group>"; };
+		D1BF5F2512582A6500F93116 /* goki_kyoro_r_0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = goki_kyoro_r_0.png; path = Resources/Images/goki_kyoro_r_0.png; sourceTree = "<group>"; };
+		D1BF5F2612582A6500F93116 /* goki_kyoro_r_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = goki_kyoro_r_1.png; path = Resources/Images/goki_kyoro_r_1.png; sourceTree = "<group>"; };
+		D1BF5F2712582A6500F93116 /* goki_kyoro_r_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = goki_kyoro_r_2.png; path = Resources/Images/goki_kyoro_r_2.png; sourceTree = "<group>"; };
+		D1BF5F2812582A6500F93116 /* goki_kyoro_r_3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = goki_kyoro_r_3.png; path = Resources/Images/goki_kyoro_r_3.png; sourceTree = "<group>"; };
+		D1BF5F2C12582A6500F93116 /* search_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = search_icon.png; path = Resources/Images/search_icon.png; sourceTree = "<group>"; };
+		D1BF5F2D12582A6500F93116 /* splash_0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = splash_0.png; path = Resources/Images/splash_0.png; sourceTree = "<group>"; };
+		D1BF5F2E12582A6500F93116 /* splash_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = splash_1.png; path = Resources/Images/splash_1.png; sourceTree = "<group>"; };
+		D1BF5F2F12582A6500F93116 /* splash_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = splash_2.png; path = Resources/Images/splash_2.png; sourceTree = "<group>"; };
+		D1BF5F3012582A6500F93116 /* splash_3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = splash_3.png; path = Resources/Images/splash_3.png; sourceTree = "<group>"; };
+		D1F8400E126D7AC900897890 /* graphicUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = graphicUtil.h; path = Game/graphicUtil.h; sourceTree = "<group>"; };
+		D1F8400F126D7AC900897890 /* graphicUtil.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = graphicUtil.mm; path = Game/graphicUtil.mm; sourceTree = "<group>"; };
+		D1F84036126D80B100897890 /* Particle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Particle.h; path = Game/Particle.h; sourceTree = "<group>"; };
+		D1F84037126D80B100897890 /* Particle.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = Particle.mm; path = Game/Particle.mm; sourceTree = "<group>"; };
+		D1F84084126D8F2E00897890 /* test.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = test.png; path = Resources/Images/test.png; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1D60588F0D05DD3D006BFB54 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
+				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
+				288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */,
+				D12FDDFE1257809600D355BD /* MapKit.framework in Frameworks */,
+				D12FDE401257855E00D355BD /* CoreLocation.framework in Frameworks */,
+				D12537A5126D61CA004996AD /* OpenGLES.framework in Frameworks */,
+				D12537F2126D69A6004996AD /* QuartzCore.framework in Frameworks */,
+				D1A560C912705C9500F82803 /* AVFoundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		080E96DDFE201D6D7F000001 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				D187C255126D4D93004D90BC /* Game */,
+				D12FDDCB125766D900D355BD /* Ctrl */,
+				D12FDD7C12575BD300D355BD /* Definitions */,
+				1D3623240D0F684500981E51 /* BombVoyageAppDelegate.h */,
+				1D3623250D0F684500981E51 /* BombVoyageAppDelegate.mm */,
+				28D7ACF60DDB3853001CB0EB /* BombVoyageViewController.h */,
+				28D7ACF70DDB3853001CB0EB /* BombVoyageViewController.mm */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		19C28FACFE9D520D11CA2CBB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1D6058910D05DD3D006BFB54 /* BombVoyage.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
+			isa = PBXGroup;
+			children = (
+				080E96DDFE201D6D7F000001 /* Classes */,
+				29B97315FDCFA39411CA2CEA /* Other Sources */,
+				29B97317FDCFA39411CA2CEA /* Resources */,
+				29B97323FDCFA39411CA2CEA /* Frameworks */,
+				19C28FACFE9D520D11CA2CBB /* Products */,
+			);
+			name = CustomTemplate;
+			sourceTree = "<group>";
+		};
+		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
+			isa = PBXGroup;
+			children = (
+				32CA4F630368D1EE00C91783 /* BombVoyage_Prefix.pch */,
+				29B97316FDCFA39411CA2CEA /* main.m */,
+			);
+			name = "Other Sources";
+			sourceTree = "<group>";
+		};
+		29B97317FDCFA39411CA2CEA /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				D1A560A5127059E400F82803 /* sounds */,
+				D12FDD99125760B000D355BD /* images */,
+				2899E5210DE3E06400AC0155 /* BombVoyageViewController.xib */,
+				28AD733E0D9D9553002E5188 /* MainWindow.xib */,
+				8D1107310486CEB800E47090 /* BombVoyage-Info.plist */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D12FDDFD1257809600D355BD /* MapKit.framework */,
+				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
+				1D30AB110D05D00D00671497 /* Foundation.framework */,
+				288765A40DF7441C002DB57D /* CoreGraphics.framework */,
+				D12FDE3F1257855E00D355BD /* CoreLocation.framework */,
+				D12537A4126D61CA004996AD /* OpenGLES.framework */,
+				D12537F1126D69A6004996AD /* QuartzCore.framework */,
+				D1A560C812705C9500F82803 /* AVFoundation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D12FDD7C12575BD300D355BD /* Definitions */ = {
+			isa = PBXGroup;
+			children = (
+				D12FDD7D12575BE700D355BD /* Define.h */,
+				D12FDDD01257694600D355BD /* AnimationNames.h */,
+				D12FDDE71257740400D355BD /* MessageText.h */,
+				D12FDDF3125779C800D355BD /* EventNames.h */,
+			);
+			name = Definitions;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		D12FDD99125760B000D355BD /* images */ = {
+			isa = PBXGroup;
+			children = (
+				D190BA04126DD5DB00301421 /* splash.png */,
+				D190B9F4126DD2E000301421 /* sample_bomb.png */,
+				D1F84084126D8F2E00897890 /* test.png */,
+				D1BF5F1E12582A6500F93116 /* goki_damage_0.png */,
+				D1BF5F1F12582A6500F93116 /* goki_damage_1.png */,
+				D1BF5F2112582A6500F93116 /* goki_kyoro_l_0.png */,
+				D1BF5F2212582A6500F93116 /* goki_kyoro_l_1.png */,
+				D1BF5F2312582A6500F93116 /* goki_kyoro_l_2.png */,
+				D1BF5F2412582A6500F93116 /* goki_kyoro_l_3.png */,
+				D1BF5F2512582A6500F93116 /* goki_kyoro_r_0.png */,
+				D1BF5F2612582A6500F93116 /* goki_kyoro_r_1.png */,
+				D1BF5F2712582A6500F93116 /* goki_kyoro_r_2.png */,
+				D1BF5F2812582A6500F93116 /* goki_kyoro_r_3.png */,
+				D1BF5F2C12582A6500F93116 /* search_icon.png */,
+				D1BF5F2D12582A6500F93116 /* splash_0.png */,
+				D19611561259B5D600746673 /* Default.png */,
+				D1BF5F2E12582A6500F93116 /* splash_1.png */,
+				D1BF5F2F12582A6500F93116 /* splash_2.png */,
+				D1BF5F3012582A6500F93116 /* splash_3.png */,
+				D1BF5F1612582A4F00F93116 /* bomb_body_0.png */,
+				D1BF5F1712582A4F00F93116 /* bomb_display_0.png */,
+				D1BF5F1812582A4F00F93116 /* bomb_icon.png */,
+				D1BF5F1912582A4F00F93116 /* bomb_red_0.png */,
+			);
+			name = images;
+			sourceTree = "<group>";
+		};
+		D12FDDCB125766D900D355BD /* Ctrl */ = {
+			isa = PBXGroup;
+			children = (
+				D125376F126D58E9004996AD /* BVGameViewCtrl.h */,
+				D1253770126D58E9004996AD /* BVGameViewCtrl.mm */,
+				D12FDDD112576B3600D355BD /* MainMenuViewCtrl.h */,
+				D12FDDD212576B3600D355BD /* MainMenuViewCtrl.mm */,
+				D12FDDE0125770B200D355BD /* UnderConstViewCtrl.h */,
+				D12FDDE1125770B200D355BD /* UnderConstViewCtrl.mm */,
+				D12FDDFA12577DEF00D355BD /* MapModeViewCtrl.h */,
+				D12FDDFB12577DEF00D355BD /* MapModeViewCtrl.mm */,
+			);
+			name = Ctrl;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		D187C255126D4D93004D90BC /* Game */ = {
+			isa = PBXGroup;
+			children = (
+				D187C256126D4E02004D90BC /* MyGLBaseView.h */,
+				D187C257126D4E02004D90BC /* MyGLBaseView.mm */,
+				D1253772126D5B0E004996AD /* BVGameObject.h */,
+				D1253773126D5B0E004996AD /* BVGameObject.mm */,
+				D1F8400E126D7AC900897890 /* graphicUtil.h */,
+				D1F8400F126D7AC900897890 /* graphicUtil.mm */,
+				D1F84036126D80B100897890 /* Particle.h */,
+				D1F84037126D80B100897890 /* Particle.mm */,
+				D13C5DE9126F09BE00A90E50 /* BVGameCore.h */,
+				D13C5DEA126F09BE00A90E50 /* BVGameCore.mm */,
+			);
+			name = Game;
+			sourceTree = "<group>";
+		};
+		D1A560A5127059E400F82803 /* sounds */ = {
+			isa = PBXGroup;
+			children = (
+				D1A560A812705A6F00F82803 /* blastSound.wav */,
+				D1A560A912705A6F00F82803 /* gokiVoice.wav */,
+			);
+			name = sounds;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1D6058900D05DD3D006BFB54 /* BombVoyage */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "BombVoyage" */;
+			buildPhases = (
+				1D60588D0D05DD3D006BFB54 /* Resources */,
+				1D60588E0D05DD3D006BFB54 /* Sources */,
+				1D60588F0D05DD3D006BFB54 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BombVoyage;
+			productName = BombVoyage;
+			productReference = 1D6058910D05DD3D006BFB54 /* BombVoyage.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		29B97313FDCFA39411CA2CEA /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "BombVoyage" */;
+			compatibilityVersion = "Xcode 3.1";
+			developmentRegion = English;
+			hasScannedForEncodings = 1;
+			knownRegions = (
+				English,
+				Japanese,
+				French,
+				German,
+			);
+			mainGroup = 29B97314FDCFA39411CA2CEA /* CustomTemplate */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1D6058900D05DD3D006BFB54 /* BombVoyage */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1D60588D0D05DD3D006BFB54 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */,
+				2899E5220DE3E06400AC0155 /* BombVoyageViewController.xib in Resources */,
+				D1BF5F1A12582A4F00F93116 /* bomb_body_0.png in Resources */,
+				D1BF5F1B12582A4F00F93116 /* bomb_display_0.png in Resources */,
+				D1BF5F1C12582A4F00F93116 /* bomb_icon.png in Resources */,
+				D1BF5F1D12582A4F00F93116 /* bomb_red_0.png in Resources */,
+				D1BF5F3212582A6500F93116 /* goki_damage_0.png in Resources */,
+				D1BF5F3312582A6500F93116 /* goki_damage_1.png in Resources */,
+				D1BF5F3512582A6500F93116 /* goki_kyoro_l_0.png in Resources */,
+				D1BF5F3612582A6500F93116 /* goki_kyoro_l_1.png in Resources */,
+				D1BF5F3712582A6500F93116 /* goki_kyoro_l_2.png in Resources */,
+				D1BF5F3812582A6500F93116 /* goki_kyoro_l_3.png in Resources */,
+				D1BF5F3912582A6500F93116 /* goki_kyoro_r_0.png in Resources */,
+				D1BF5F3A12582A6500F93116 /* goki_kyoro_r_1.png in Resources */,
+				D1BF5F3B12582A6500F93116 /* goki_kyoro_r_2.png in Resources */,
+				D1BF5F3C12582A6500F93116 /* goki_kyoro_r_3.png in Resources */,
+				D1BF5F4012582A6500F93116 /* search_icon.png in Resources */,
+				D1BF5F4112582A6500F93116 /* splash_0.png in Resources */,
+				D1BF5F4212582A6500F93116 /* splash_1.png in Resources */,
+				D1BF5F4312582A6500F93116 /* splash_2.png in Resources */,
+				D1BF5F4412582A6500F93116 /* splash_3.png in Resources */,
+				D19611571259B5D600746673 /* Default.png in Resources */,
+				D1F84085126D8F2E00897890 /* test.png in Resources */,
+				D190B9F5126DD2E000301421 /* sample_bomb.png in Resources */,
+				D190BA05126DD5DB00301421 /* splash.png in Resources */,
+				D1A560AA12705A6F00F82803 /* blastSound.wav in Resources */,
+				D1A560AB12705A6F00F82803 /* gokiVoice.wav in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1D60588E0D05DD3D006BFB54 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
+				1D3623260D0F684500981E51 /* BombVoyageAppDelegate.mm in Sources */,
+				28D7ACF80DDB3853001CB0EB /* BombVoyageViewController.mm in Sources */,
+				D12FDDD312576B3600D355BD /* MainMenuViewCtrl.mm in Sources */,
+				D12FDDE2125770B200D355BD /* UnderConstViewCtrl.mm in Sources */,
+				D12FDDFC12577DEF00D355BD /* MapModeViewCtrl.mm in Sources */,
+				D187C258126D4E02004D90BC /* MyGLBaseView.mm in Sources */,
+				D1253771126D58E9004996AD /* BVGameViewCtrl.mm in Sources */,
+				D1253774126D5B0E004996AD /* BVGameObject.mm in Sources */,
+				D1F84010126D7AC900897890 /* graphicUtil.mm in Sources */,
+				D1F84038126D80B100897890 /* Particle.mm in Sources */,
+				D13C5DEB126F09BE00A90E50 /* BVGameCore.mm in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		1D6058940D05DD3E006BFB54 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = BombVoyage_Prefix.pch;
+				INFOPLIST_FILE = "BombVoyage-Info.plist";
+				PRODUCT_NAME = BombVoyage;
+			};
+			name = Debug;
+		};
+		1D6058950D05DD3E006BFB54 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = BombVoyage_Prefix.pch;
+				INFOPLIST_FILE = "BombVoyage-Info.plist";
+				PRODUCT_NAME = BombVoyage;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C01FCF4F08A954540054247B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				PREBINDING = NO;
+				SDKROOT = iphoneos4.2;
+			};
+			name = Debug;
+		};
+		C01FCF5008A954540054247B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Naoya Karatsu (P52ZVS6MZ8)";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PREBINDING = NO;
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "4378A2CA-96DA-4F71-ACDB-D5CBFBE45ED4";
+				SDKROOT = iphoneos4.2;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "BombVoyage" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1D6058940D05DD3E006BFB54 /* Debug */,
+				1D6058950D05DD3E006BFB54 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C01FCF4E08A954540054247B /* Build configuration list for PBXProject "BombVoyage" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C01FCF4F08A954540054247B /* Debug */,
+				C01FCF5008A954540054247B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 29B97313FDCFA39411CA2CEA /* Project object */;
+}
