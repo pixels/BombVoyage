@@ -162,10 +162,7 @@
 
   game_core->update();
 
-  glEnable(GL_BLEND); // アルファブレンディングを有効にする
-  glBlendFunc(GL_SRC_ALPHA, GL_ONE);
   game_core->draw();
-  glDisable(GL_BLEND);
 
   [(MyGLBaseView *)anime_view presentFramebuffer];
 }

@@ -18,6 +18,7 @@ Particle::Particle() {
   this->lifeSpan = 100;
   this->moveX = 0.0f;
   this->moveY = 0.0f;
+  this->texture_name = @"blast";
 }
 
 void Particle::draw(GLuint texture) {
@@ -33,4 +34,8 @@ void Particle::update() {
 
   x += moveX;
   y += moveY;
+}
+
+void Particle::setTextures(NSDictionary* dic) {
+  textures = dic;
 }

@@ -22,7 +22,11 @@ class Particle {
     int frameCount;
     int lifeSpan;
 
+    NSDictionary* textures;
+    NSString* texture_name;
+
     Particle();
+    void setTextures(NSDictionary* dic);
     void draw(GLuint texture);
     void update();
 };
