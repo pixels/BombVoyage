@@ -125,20 +125,20 @@ void BVGameCore::drawBombs() {
 
       // color
       float lifePercentage = (float)(bomb[i]->frameCount) / (float)(bomb[i]->lifeSpan);
-      int alpha = 255;
+      int alpha = 255 * (1.0 - (sinf(0.1 * bomb[i]->frameCount) + 1) / 4);
 
-      colors[colorIndex++] = 255; colors[colorIndex++] = 255;
       colors[colorIndex++] = 255; colors[colorIndex++] = alpha;
-      colors[colorIndex++] = 255; colors[colorIndex++] = 255;
+      colors[colorIndex++] = alpha; colors[colorIndex++] = 255;
       colors[colorIndex++] = 255; colors[colorIndex++] = alpha;
-      colors[colorIndex++] = 255; colors[colorIndex++] = 255;
+      colors[colorIndex++] = alpha; colors[colorIndex++] = 255;
       colors[colorIndex++] = 255; colors[colorIndex++] = alpha;
-      colors[colorIndex++] = 255; colors[colorIndex++] = 255;
+      colors[colorIndex++] = alpha; colors[colorIndex++] = 255;
       colors[colorIndex++] = 255; colors[colorIndex++] = alpha;
-      colors[colorIndex++] = 255; colors[colorIndex++] = 255;
+      colors[colorIndex++] = alpha; colors[colorIndex++] = 255;
       colors[colorIndex++] = 255; colors[colorIndex++] = alpha;
-      colors[colorIndex++] = 255; colors[colorIndex++] = 255;
+      colors[colorIndex++] = alpha; colors[colorIndex++] = 255;
       colors[colorIndex++] = 255; colors[colorIndex++] = alpha;
+      colors[colorIndex++] = alpha; colors[colorIndex++] = 255;
 
       texCoords[texCoordIndex++] = 0.0f;
       texCoords[texCoordIndex++] = 0.0f;
