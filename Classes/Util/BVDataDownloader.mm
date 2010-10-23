@@ -168,7 +168,8 @@ static xmlSAXHandler _saxHandlerStruct = {
     //[conn release];
   }
 
-  NSString *urlstr = @"http://192.168.0.2:8124";
+  //NSString *urlstr = @"http://192.168.0.2:8124";
+  NSString *urlstr = @"http://neo-gatto.com:8124";
   NSData *request_data = [@"message=call" dataUsingEncoding:NSUTF8StringEncoding];
   NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:urlstr]];
   [request setHTTPMethod: @"POST"];
