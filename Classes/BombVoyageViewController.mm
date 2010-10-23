@@ -45,12 +45,19 @@
   ctrl = [[MainMenuViewCtrl alloc] init];
   [self.view addSubview:ctrl.view];
 
+  downloader = [[BVDataDownloader alloc] init];
+
   NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
   [notificationCenter addObserver:self selector:@selector(onGoToMapModeButtonPushed:) name:GO_TO_NEXT_PAGE_EVENT object:nil];
+  [notificationCenter addObserver:self selector:@selector(onSendRequestButtonPushed:) name:SEND_REQUEST_EVENT object:nil];
 }
 
 - (void)onGoToMapModeButtonPushed:(UIButton *)sender {
   [self goToMapMode];
+}
+
+- (void)onSendRequestButtonPushed:(UIButton *)sender {
+  [downloader establishConnection];
 }
 
 - (void)goToMainMenu {
@@ -66,20 +73,20 @@
 }
 
 - (void)goToModeWithCtrl:(UIViewController *)target_ctrl {
-  [self.view insertSubview:target_ctrl.view belowSubview:ctrl.view];
+[self.view insertSubview:target_ctrl.view belowSubview:ctrl.view];
 
-  [self initAnimation:GO_TO_MAIN_MENU_ANIM_ID duration:0.5f];
+[self initAnimation:GO_TO_MAIN_MENU_ANIM_ID duration:0.5f];
 
-  [target_ctrl.view setAlpha:0];
-  [ctrl.view setAlpha:1];
-  [ctrl viewWillDisappear:YES];
-  [target_ctrl.view setAlpha:1];
-  [ctrl.view setAlpha:0];
-  [ctrl viewDidDisappear:YES];
-  [UIView commitAnimations];
+[target_ctrl.view setAlpha:0];
+[ctrl.view setAlpha:1];
+[ctrl viewWillDisappear:YES];
+[target_ctrl.view setAlpha:1];
+[ctrl.view setAlpha:0];
+[ctrl viewDidDisappear:YES];
+[UIView commitAnimations];
 
-  [ctrl release];
-  ctrl = target_ctrl;
+[ctrl release];
+ctrl = target_ctrl;
 }
 
 
@@ -148,6 +155,7 @@ return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
 - (void)dealloc {
+  [downloader release];
   [super dealloc];
 }
 

@@ -54,6 +54,8 @@
 		D1F84010126D7AC900897890 /* graphicUtil.mm in Sources */ = {isa = PBXBuildFile; fileRef = D1F8400F126D7AC900897890 /* graphicUtil.mm */; };
 		D1F84038126D80B100897890 /* Particle.mm in Sources */ = {isa = PBXBuildFile; fileRef = D1F84037126D80B100897890 /* Particle.mm */; };
 		D1F84085126D8F2E00897890 /* test.png in Resources */ = {isa = PBXBuildFile; fileRef = D1F84084126D8F2E00897890 /* test.png */; };
+		D1FFC8DC1272E0B4005DAE7A /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D1FFC8DB1272E0B4005DAE7A /* libxml2.dylib */; };
+		D1FFC8E31272E1B9005DAE7A /* BVDataDownloader.mm in Sources */ = {isa = PBXBuildFile; fileRef = D1FFC8E21272E1B9005DAE7A /* BVDataDownloader.mm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -122,6 +124,9 @@
 		D1F84036126D80B100897890 /* Particle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Particle.h; path = Game/Particle.h; sourceTree = "<group>"; };
 		D1F84037126D80B100897890 /* Particle.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = Particle.mm; path = Game/Particle.mm; sourceTree = "<group>"; };
 		D1F84084126D8F2E00897890 /* test.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = test.png; path = Resources/Images/test.png; sourceTree = "<group>"; };
+		D1FFC8DB1272E0B4005DAE7A /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
+		D1FFC8E11272E1B9005DAE7A /* BVDataDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BVDataDownloader.h; path = Util/BVDataDownloader.h; sourceTree = "<group>"; };
+		D1FFC8E21272E1B9005DAE7A /* BVDataDownloader.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = BVDataDownloader.mm; path = Util/BVDataDownloader.mm; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,6 +142,7 @@
 				D12537A5126D61CA004996AD /* OpenGLES.framework in Frameworks */,
 				D12537F2126D69A6004996AD /* QuartzCore.framework in Frameworks */,
 				D1A560C912705C9500F82803 /* AVFoundation.framework in Frameworks */,
+				D1FFC8DC1272E0B4005DAE7A /* libxml2.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -146,6 +152,7 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				D1FFC8E01272E18D005DAE7A /* Util */,
 				D187C255126D4D93004D90BC /* Game */,
 				D12FDDCB125766D900D355BD /* Ctrl */,
 				D12FDD7C12575BD300D355BD /* Definitions */,
@@ -201,6 +208,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D1FFC8DB1272E0B4005DAE7A /* libxml2.dylib */,
 				D12FDDFD1257809600D355BD /* MapKit.framework */,
 				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
 				1D30AB110D05D00D00671497 /* Foundation.framework */,
@@ -295,6 +303,15 @@
 				D1A560A912705A6F00F82803 /* gokiVoice.wav */,
 			);
 			name = sounds;
+			sourceTree = "<group>";
+		};
+		D1FFC8E01272E18D005DAE7A /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				D1FFC8E11272E1B9005DAE7A /* BVDataDownloader.h */,
+				D1FFC8E21272E1B9005DAE7A /* BVDataDownloader.mm */,
+			);
+			name = Util;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -395,6 +412,7 @@
 				D1F84010126D7AC900897890 /* graphicUtil.mm in Sources */,
 				D1F84038126D80B100897890 /* Particle.mm in Sources */,
 				D13C5DEB126F09BE00A90E50 /* BVGameCore.mm in Sources */,
+				D1FFC8E31272E1B9005DAE7A /* BVDataDownloader.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -449,6 +467,7 @@
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.2.sdk/usr/include/libxml2;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PREBINDING = NO;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "4378A2CA-96DA-4F71-ACDB-D5CBFBE45ED4";

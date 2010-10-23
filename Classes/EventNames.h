@@ -9,3 +9,4 @@
 #import <UIKit/UIKit.h>
 
 #define GO_TO_NEXT_PAGE_EVENT @"go_to_next_page_event"
+#define SEND_REQUEST_EVENT @"send_request"

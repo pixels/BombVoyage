@@ -46,11 +46,25 @@
   [goToMapModeButton setUserInteractionEnabled:YES];
   goToMapModeButton.frame = CGRectMake(0, 0, 150, 50);
   [self.view addSubview:goToMapModeButton];
+  
+  sendRequestButton = [[UIButton buttonWithType:UIButtonTypeRoundedRect] retain];
+  [sendRequestButton setTitle:GO_TO_MAP_MODE_MESSAGE forState:UIControlStateNormal];
+  sendRequestButton.enabled = true;
+  [sendRequestButton addTarget:self action:@selector(onSendRequestButtonPushed:) forControlEvents:UIControlEventTouchUpInside];
+  [sendRequestButton setUserInteractionEnabled:YES];
+  sendRequestButton.frame = CGRectMake(0, 100, 150, 50);
+  [self.view addSubview:sendRequestButton];
+
 }
 
 - (void)onGoToMapModeButtonPushed:(UIButton *)sender {
   [[NSNotificationCenter defaultCenter] postNotificationName:GO_TO_NEXT_PAGE_EVENT object:nil userInfo:nil];
 }
+
+- (void)onSendRequestButtonPushed:(UIButton *)sender {
+  [[NSNotificationCenter defaultCenter] postNotificationName:SEND_REQUEST_EVENT object:nil userInfo:nil];
+}
+
 
 /*
 // Override to allow orientations other than the default portrait orientation.

@@ -11,11 +11,13 @@
 
 @interface MainMenuViewCtrl : UIViewController {
   UIButton* goToMapModeButton;
+  UIButton* sendRequestButton;
   UIButton* goToProfModeButton;
   UIButton* goToToolModeButton;
 }
 
 - (void)setButtonsMyself;
 - (void)onGoToMapModeButtonPushed:(UIButton *)sender;
+- (void)onSendRequestButtonPushed:(UIButton *)sender;
 
 @end

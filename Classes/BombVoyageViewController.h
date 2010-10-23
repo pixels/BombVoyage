@@ -7,9 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BVDataDownloader.h"
 
 @interface BombVoyageViewController : UIViewController {
   UIViewController * ctrl;
+  BVDataDownloader *downloader;
 }
 
 - (void)goToMainMenu;
