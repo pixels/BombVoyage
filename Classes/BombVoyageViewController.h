@@ -12,6 +12,8 @@
 @interface BombVoyageViewController : UIViewController {
   UIViewController * ctrl;
   BVDataDownloader *downloader;
+
+  BOOL map_mode;
 }
 
 - (BOOL)needToLogin;

@@ -50,6 +50,8 @@
   }
   [self.view addSubview:ctrl.view];
 
+  map_mode = false;
+
   downloader = [[BVDataDownloader alloc] init];
 
   NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
@@ -83,18 +85,24 @@
   UIViewController * login_mode_ctrl = [[MainMenuViewCtrl alloc] init];
 
   [self goToModeWithCtrl:login_mode_ctrl];
+
+  map_mode = false;
 }
 
 - (void)goToMainMenu {
   UIViewController * main_menu_ctrl = [[MainMenuViewCtrl alloc] init];
 
   [self goToModeWithCtrl:main_menu_ctrl];
+
+  map_mode = false;
 }
 
 - (void)goToMapMode {
   UIViewController * map_mode_ctrl = [[MapModeViewCtrl alloc] init];
 
   [self goToModeWithCtrl:map_mode_ctrl];
+
+  map_mode = true;
 }
 
 - (void)goToModeWithCtrl:(UIViewController *)target_ctrl {
@@ -156,6 +164,18 @@ ctrl = target_ctrl;
 return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 */
+
+-(void) stopAnimation {
+  if ( map_mode ) {
+    [ctrl stopAnimation];
+  }
+}
+
+-(void) resumeAnimation {
+  if ( map_mode ) {
+    [ctrl startAnimation];
+  }
+}
 
 - (void)didReceiveMemoryWarning {
   // Releases the view if it doesn't have a superview.
