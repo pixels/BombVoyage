@@ -53,7 +53,7 @@
   [sendRequestButton addTarget:self action:@selector(onSendRequestButtonPushed:) forControlEvents:UIControlEventTouchUpInside];
   [sendRequestButton setUserInteractionEnabled:YES];
   sendRequestButton.frame = CGRectMake(0, 100, 150, 50);
-  [self.view addSubview:sendRequestButton];
+  //[self.view addSubview:sendRequestButton];
 
 }
 
@@ -62,7 +62,15 @@
 }
 
 - (void)onSendRequestButtonPushed:(UIButton *)sender {
-  [[NSNotificationCenter defaultCenter] postNotificationName:SEND_REQUEST_EVENT object:nil userInfo:nil];
+  NSArray *keys = [[NSArray alloc] initWithObjects:@"name", @"pass", nil];
+  NSArray *values = [[NSArray alloc] initWithObjects:@"karatsu", @"pixels", nil];
+  NSDictionary *data = [[NSDictionary alloc] initWithObjects:values forKeys:keys];
+  [keys release];
+  [values release];
+  [[NSNotificationCenter defaultCenter] postNotificationName:SEND_REQUEST_EVENT
+						      object:nil
+						    userInfo:data];
+  [data release];
 }
 
 

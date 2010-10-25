@@ -7,6 +7,7 @@
 //
 
 #import "BVDataDownloader.h"
+#import "EventNames.h"
 
 static void startElementHandler(
         void* ctx, 
@@ -94,6 +95,7 @@ static xmlSAXHandler _saxHandlerStruct = {
       parser_context = xmlCreatePushParserCtxt(&_saxHandlerStruct, self, NULL, 0, NULL);
       dic = [[NSMutableDictionary dictionary] retain];
       dics = [[NSMutableArray alloc] init];
+      waiting = false;
     }
     return self;
 }
@@ -106,71 +108,19 @@ static xmlSAXHandler _saxHandlerStruct = {
 }
 */
 
-/*
-- (void)startElementLocalName:(const xmlChar*)localname 
-		       prefix:(const xmlChar*)prefix 
-			  URI:(const xmlChar*)URI 
-		nb_namespaces:(int)nb_namespaces 
-		   namespaces:(const xmlChar**)namespaces 
-		nb_attributes:(int)nb_attributes 
-		 nb_defaulted:(int)nb_defaulted 
-		   attributes:(const xmlChar**)attributes
-{
-  // channel
-  NSLog(@"here");
-  if (strncmp((char*)localname, "contents", sizeof("contents")) == 0) {
-    // フラグを設定する
-    is_channel = YES;
+- (void)sendLoginRequest:(NSString *)parameters {
+  [self establishConnection:parameters];
+}
 
-    return;
-  }
-
-  // item
-  if (strncmp((char*)localname, "item", sizeof("item")) == 0) {
-    // フラグを設定する
-    is_item = YES;
-
-    // itemを作成する
-    current_item = [NSMutableDictionary dictionary];
-    [[channel objectForKey:@"items"] addObject:current_item];
-
-    return;
-  }
-
-  // title, link, description
-  if (strncmp((char*)localname, "title", sizeof("title")) == 0 || 
-      strncmp((char*)localname, "link", sizeof("link")) == 0 || 
-      strncmp((char*)localname, "description", sizeof("description")) == 0)
-  {
-    // キー文字列を作成する
-    NSString*   key;
-    key = [NSString stringWithCString:(char*)localname 
-			     encoding:NSUTF8StringEncoding];
-
-    // 辞書を決定する
-    NSMutableDictionary*    dict = nil;
-    if (is_item) {
-      dict = current_item;
-    }
-    else if (is_channel) {
-      dict = channel;
-    }
-
-    // 文字列を設定する
-    [dict setObject:current_characters forKey:key];
-    [current_characters release], current_characters = nil;
-  }
-} */
-
-- (void)establishConnection {
-  if (conn) {
+- (void)establishConnection:(NSString *)parameters {
+  if (conn && waiting) {
     [conn cancel];
     //[conn release];
   }
 
-  //NSString *urlstr = @"http://192.168.0.2:8124";
+  // NSString *urlstr = @"http://192.168.0.2:8124";
   NSString *urlstr = @"http://neo-gatto.com:8124";
-  NSData *request_data = [@"message=call" dataUsingEncoding:NSUTF8StringEncoding];
+  NSData *request_data = [parameters dataUsingEncoding:NSUTF8StringEncoding];
   NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:urlstr]];
   [request setHTTPMethod: @"POST"];
   [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"content-type"];
@@ -182,6 +132,7 @@ static xmlSAXHandler _saxHandlerStruct = {
 - (void)connection:(NSURLConnection *)conn didReceiveData:(NSData *)receivedData {
   NSLog(@"parse chunk");
   xmlParseChunk(parser_context, (const char*)[receivedData bytes], [receivedData length], 0);
+  waiting = false;
 }
 
 - (void)connection:(NSURLConnection *)conn didReceiveResponse:(NSURLResponse *)res {
@@ -201,12 +152,15 @@ static xmlSAXHandler _saxHandlerStruct = {
 }
 
 - (void)connection:(NSURLConnection *)conn didFailWithError:(NSError *)error {
-  [conn release];
+  //[conn release];
   // NSLog(@"connection faled: %@ %@", [error localizedDescription], [[error userInfo] objectForKey:NSErrorFailingURLStringKey]);
+  waiting = false;
 }
+
 - (void)connectionDidFinishLoading:(NSURLConnection *)conn {
   NSString *contents = [[NSString alloc] initWithData:buffer encoding:NSUTF8StringEncoding];
   NSLog(@"%@", contents);
+  waiting = false;
 }
 
 - (void)startElementLocalName:(const xmlChar*)localname 
@@ -244,7 +198,20 @@ static xmlSAXHandler _saxHandlerStruct = {
     [dics removeLastObject];
   }
 
-  if ( [dics count] == 0 ) NSLog(@"%@", [dic description]);
+  if ( [dics count] == 0 ) {
+    NSLog(@"%@", [dic description]);
+    [self receiveReplyToLoginRequest:dic];
+
+    parser_context = xmlCreatePushParserCtxt(&_saxHandlerStruct, self, NULL, 0, NULL);
+    dic = [[NSMutableDictionary dictionary] retain];
+    dics = [[NSMutableArray alloc] init];
+  }
+}
+
+- (void) receiveReplyToLoginRequest:(NSDictionary *)dic {
+  [[NSNotificationCenter defaultCenter] postNotificationName:RECEIVE_REPLY_TO_LOGIN_REQUEST_EVENT
+						      object:nil
+						    userInfo:dic];
 }
 
 - (void) printDictionary:(NSDictionary*)dic depth:(int)depth {
@@ -271,6 +238,9 @@ static xmlSAXHandler _saxHandlerStruct = {
 }
 
 - (void)dealloc {
+  [conn cancel];
+  [conn release];
+
   [dic release];
   [dics release];
   [current_characters release], current_characters = nil;

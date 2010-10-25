@@ -13,6 +13,7 @@
 @interface BVDataDownloader : NSObject {
   NSData* buffer;
   NSURLConnection *conn;
+  BOOL waiting;
   xmlParserCtxtPtr parser_context;
 
   BOOL is_channel, is_item;

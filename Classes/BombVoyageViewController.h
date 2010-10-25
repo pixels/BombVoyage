@@ -14,12 +14,15 @@
   BVDataDownloader *downloader;
 }
 
+- (BOOL)needToLogin;
+- (void)goToLoginMode;
 - (void)goToMainMenu;
 - (void)goToUnderConst;
 - (void)goToMapMode;
 - (void)goToModeWithCtrl:(UIViewController *)target_ctrl;
 - (void)initAnimation:(NSString *)animationID duration:(NSTimeInterval)duration;
 - (void)onAnimationEnd:(NSString *)animationID finished:(NSNumber *)finished context:(void *)context;
+- (void)onSendLoginRequestButtonPushed:(NSNotification *)notification;
 
 @end
 

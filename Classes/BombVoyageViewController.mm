@@ -13,6 +13,7 @@
 #import "MainMenuViewCtrl.h"
 #import "UnderConstViewCtrl.h"
 #import "MapModeViewCtrl.h"
+#import "BVLoginViewCtrl.h"
 
 @implementation BombVoyageViewController
 
@@ -42,22 +43,46 @@
   [self.view setBackgroundColor:[UIColor redColor]];
   self.view.frame = CGRectMake(0, 0, WINDOW_W, WINDOW_H);
 
-  ctrl = [[MainMenuViewCtrl alloc] init];
+  if ([self needToLogin]) {
+    ctrl = [[BVLoginViewCtrl alloc] init];
+  } else {
+    ctrl = [[MainMenuViewCtrl alloc] init];
+  }
   [self.view addSubview:ctrl.view];
 
   downloader = [[BVDataDownloader alloc] init];
 
   NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
   [notificationCenter addObserver:self selector:@selector(onGoToMapModeButtonPushed:) name:GO_TO_NEXT_PAGE_EVENT object:nil];
-  [notificationCenter addObserver:self selector:@selector(onSendRequestButtonPushed:) name:SEND_REQUEST_EVENT object:nil];
+  [notificationCenter addObserver:self selector:@selector(goToMainMenu) name:GO_TO_MAIN_MENU_EVENT object:nil];
+  [notificationCenter addObserver:self selector:@selector(onSendLoginRequestButtonPushed:) name:SEND_LOGIN_REQUEST_EVENT object:nil];
+  [notificationCenter addObserver:self selector:@selector(onReceiveReplyToLoginRequest:) name:RECEIVE_REPLY_TO_LOGIN_REQUEST_EVENT object:nil];
+}
+
+- (BOOL)needToLogin {
+  return true;
 }
 
 - (void)onGoToMapModeButtonPushed:(UIButton *)sender {
   [self goToMapMode];
 }
 
-- (void)onSendRequestButtonPushed:(UIButton *)sender {
+- (void)onReceiveReplyToLoginRequest:(NSNotification *)notification {
+  [ctrl receiveReplyToLoginRequest:[notification userInfo]];
+}
+
+- (void)onSendLoginRequestButtonPushed:(NSNotification *)notification {
+  [downloader sendLoginRequest:[NSString stringWithFormat:@"action=login&name=%@&pass=%@", [[notification userInfo] objectForKey:@"name"],[[notification userInfo] objectForKey:@"pass"]]];
+}
+
+- (void)onLoginButtonPushed:(UIButton *)sender {
   [downloader establishConnection];
+}
+
+- (void)goToLoginMode {
+  UIViewController * login_mode_ctrl = [[MainMenuViewCtrl alloc] init];
+
+  [self goToModeWithCtrl:login_mode_ctrl];
 }
 
 - (void)goToMainMenu {
@@ -88,7 +113,6 @@
 [ctrl release];
 ctrl = target_ctrl;
 }
-
 
 - (void)goToUnderConst {
   NSLog(@"under const");

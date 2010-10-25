@@ -10,3 +10,4 @@
 
 #define GO_TO_UNDER_CONST_MESSAGE @"工事中へ"
 #define GO_TO_MAP_MODE_MESSAGE @"マップモードへ"
+#define LOGIN_MESSAGE @"ログイン"
