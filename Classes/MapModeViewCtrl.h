@@ -18,6 +18,7 @@
 #import <OpenGLES/ES1/gl.h>
 #import <OpenGLES/ES1/glext.h>
 #import "graphicUtil.h"
+#import "BVTCPClient.h"
 
 // Uniform index.
 enum {
@@ -43,6 +44,8 @@ enum {
   GLuint program;
 
   BVGameCore* game_core;
+
+  BVTCPClient* tcp_client;
 
   BOOL animating;
   BOOL displayLinkSupported;

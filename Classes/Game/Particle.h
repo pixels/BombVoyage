@@ -10,6 +10,7 @@
 #import <OpenGLES/ES1/gl.h>
 #import <OpenGLES/ES1/glext.h>
 #import "graphicUtil.h"
+#import "Define.h"
 
 class Particle {
   public:
@@ -21,6 +22,7 @@ class Particle {
     float moveY;
     int frameCount;
     int lifeSpan;
+    NSMutableArray blastArray;
 
     NSDictionary* textures;
     NSString* texture_name;

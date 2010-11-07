@@ -14,20 +14,15 @@ BVGameCore::BVGameCore() {
   dic = [[NSMutableDictionary alloc] init];
   loadTextures();
 
-  for(int i=0; i<PARTICLE_COUNT; i++) {
-    particle[i] = new Particle();
-    particle[i]->setTextures(dic);
-  }
+
   for(int i=0; i<BOMB_COUNT; i++) {
     bomb[i] = new Bomb();
     bomb[i]->setTextures(dic);
   }
 
-
-  NSString *hitSoundFilePath = [[NSBundle mainBundle] pathForResource:@"blastSound" ofType:@"wav"];
-  NSURL *hitSoundFileUrl = [NSURL fileURLWithPath:hitSoundFilePath];
-  hitSound = [[AVAudioPlayer alloc] initWithContentsOfURL:hitSoundFileUrl error:nil];
-  [hitSound prepareToPlay];
+  addBomb(0.5, 0.5, 0.1, 0, 0);
+  addBomb(0, 0, 0.1, 0, 0);
+  addBomb(-0.5, 0.2, 0.1, 0, 0);
 }
 
 void BVGameCore::loadTextures() {
@@ -50,27 +45,6 @@ void BVGameCore::addBomb(float x, float y, float size, float moveX, float moveY)
       bomb[i]->moveY = moveY;
       bomb[i]->frameCount = 0;
       bomb[i]->lifeSpan = BOMB_COUNT;
-      break;
-    }
-  }
-}
-
-void BVGameCore::add(float x, float y, float size, float moveX, float moveY) {
-  for(int i=0; i<PARTICLE_COUNT; i++) {
-    if(particle[i]->activeFlag == false) {
-      particle[i]->activeFlag = true;
-      particle[i]->x = x;
-      particle[i]->y = y;
-      particle[i]->size = size;
-      particle[i]->moveX = moveX;
-      particle[i]->moveY = moveY;
-      particle[i]->frameCount = 0;
-      particle[i]->lifeSpan = PARTICLE_COUNT;
-
-      if ( i % 10 == 0 ) {
-	[hitSound setCurrentTime:0.0f];
-	[hitSound play];
-      }
       break;
     }
   }
@@ -99,7 +73,7 @@ void BVGameCore::drawBombs() {
   int activebombCount = 0;
 
   for(int i=0; i<BOMB_COUNT; i++) {
-    if(bomb[i]->activeFlag == true) {
+    if((bomb[i]->activeFlag == true) && (bomb[i]->mode == BOMB_CD)) {
       float centerX = bomb[i]->x;
       float centerY = bomb[i]->y;
       float size = bomb[i]->size;
@@ -178,17 +152,21 @@ void BVGameCore::drawSplash() {
   GLubyte colors[6 * 4 * PARTICLE_COUNT];
   GLfloat texCoords[6 * 2 * PARTICLE_COUNT];
 
-  int vertexIndex = 0;
-  int colorIndex = 0;
-  int texCoordIndex = 0;
+  glEnable(GL_TEXTURE_2D); // テクスチャ機能を有効にする
+  glBindTexture(GL_TEXTURE_2D, blastTexture);
 
-  int activeParticleCount = 0;
+  for(int i=0; i<BOMB_COUNT; i++) {
+    int activeParticleCount = 0;
+    int vertexIndex = 0;
+    int colorIndex = 0;
+    int texCoordIndex = 0;
 
-  for(int i=0; i<PARTICLE_COUNT; i++) {
-    if(particle[i]->activeFlag == true) {
-      float centerX = particle[i]->x;
-      float centerY = particle[i]->y;
-      float size = particle[i]->size;
+    if(bomb[i]->activeFlag == true && bomb[i]->mode == BOMB_BLASTING) {
+      for(int j=0; j<PARTICLE_COUNT; j++) {
+	if(bomb[i]->particle[j]->activeFlag == true) {
+      float centerX = bomb[i]->particle[j]->x;
+      float centerY = bomb[i]->particle[j]->y;
+      float size = bomb[i]->particle[j]->size;
       float vLeft = -0.5f*size + centerX;
       float vRight = 0.5f*size + centerX;
       float vTop = 0.5f*size + centerY;
@@ -210,7 +188,7 @@ void BVGameCore::drawSplash() {
 
 
       // color
-      float lifePercentage = (float)(particle[i]->frameCount) / (float)(particle[i]->lifeSpan);
+      float lifePercentage = (float)(bomb[i]->particle[j]->frameCount) / (float)(bomb[i]->particle[j]->lifeSpan);
       int alpha = 255 - (int)round(lifePercentage * 255.0f);
 
       colors[colorIndex++] = 255; colors[colorIndex++] = 255;
@@ -241,52 +219,39 @@ void BVGameCore::drawSplash() {
       texCoords[texCoordIndex++] = 1.0f;
 
       activeParticleCount++;
+	}
+      }
     }
+
+    glVertexPointer(2, GL_FLOAT, 0, vertices);
+    glEnableClientState(GL_VERTEX_ARRAY);
+    glColorPointer(4, GL_UNSIGNED_BYTE, 0, colors);
+    glEnableClientState(GL_COLOR_ARRAY);
+
+    glTexCoordPointer(2, GL_FLOAT, 0, texCoords);
+    glEnableClientState(GL_TEXTURE_COORD_ARRAY);
+
+    glDrawArrays(GL_TRIANGLES, 0, activeParticleCount * 6);
   }
-
-  glEnable(GL_TEXTURE_2D); // テクスチャ機能を有効にする
-  glBindTexture(GL_TEXTURE_2D, blastTexture);
-  glVertexPointer(2, GL_FLOAT, 0, vertices);
-  glEnableClientState(GL_VERTEX_ARRAY);
-  glColorPointer(4, GL_UNSIGNED_BYTE, 0, colors);
-  glEnableClientState(GL_COLOR_ARRAY);
-
-  glTexCoordPointer(2, GL_FLOAT, 0, texCoords);
-  glEnableClientState(GL_TEXTURE_COORD_ARRAY);
-
-  glDrawArrays(GL_TRIANGLES, 0, activeParticleCount * 6);
 
   glDisableClientState(GL_TEXTURE_COORD_ARRAY);
   glDisable(GL_TEXTURE_2D); // テクスチャ機能を有効にする
 }
 
 void BVGameCore::update() {
-  float x = randF() -0.5f;
-  float y = randF() -0.5f;
-  float size = randF() * 0.7f;
-  float moveX = 0.0f;
-  float moveY = 0.0f;
-  add(x, y, size, moveX, moveY);
-
-  for(int i=0; i<PARTICLE_COUNT; i++) {
-    if(particle[i]->activeFlag == true) {
-      particle[i]->update();
-    }
-  }
-  
-  x = 2 * (randF() -0.5f);
-  y = 2 * (randF() -0.5f);
-  size = 0.7f;
-  moveX = 0.0f;
-  moveY = 0.0f;
-  addBomb(x, y, size, moveX, moveY);
-
   for(int i=0; i<BOMB_COUNT; i++) {
     if(bomb[i]->activeFlag == true) {
       bomb[i]->update();
     }
   }
-
+}
+void BVGameCore::updateObjects(NSDictionary* dic) {
+  float x = 2 * (randF() -0.5f);
+  float y = 2 * (randF() -0.5f);
+  float size = 0.7f;
+  float moveX = 0.0f;
+  float moveY = 0.0f;
+  addBomb(x, y, size, moveX, moveY);
 }
 
 void BVGameCore::dealloc() {

@@ -13,3 +13,4 @@
 #define SEND_REQUEST_EVENT @"send_request"
 #define SEND_LOGIN_REQUEST_EVENT @"send_login_request"
 #define RECEIVE_REPLY_TO_LOGIN_REQUEST_EVENT @"receive_reply_to_login_request"
+#define RECEIVE_OBJECT_UPDATE_EVENT @"receive_object_update_event"

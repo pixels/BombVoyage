@@ -8,6 +8,7 @@
 
 #import "BVDataDownloader.h"
 #import "EventNames.h"
+#import "Define.h"
 
 static void startElementHandler(
         void* ctx, 
@@ -118,8 +119,8 @@ static xmlSAXHandler _saxHandlerStruct = {
     //[conn release];
   }
 
-  // NSString *urlstr = @"http://192.168.0.2:8124";
-  NSString *urlstr = @"http://neo-gatto.com:8124";
+  NSString *urlstr = [NSString stringWithFormat:@"%@:%@", SERVER_URL, HTML_PORT];
+  NSLog(urlstr);
   NSData *request_data = [parameters dataUsingEncoding:NSUTF8StringEncoding];
   NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:urlstr]];
   [request setHTTPMethod: @"POST"];

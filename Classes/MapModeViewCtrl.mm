@@ -8,6 +8,7 @@
 
 #import "MapModeViewCtrl.h"
 #import "BVGameViewCtrl.h"
+#import "EventNames.h"
 
 @interface MapModeViewCtrl ()
 @property (nonatomic, retain) EAGLContext *context;
@@ -40,11 +41,21 @@
     game_view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, WINDOW_W, WINDOW_H)];
     [self.view addSubview:game_view];
 
+    [self establishConnection];
+
     [self initMapView];
 
     [self initGameView];
 
     [self initToolbar];
+
+    NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
+    [notificationCenter addObserver:self selector:@selector(onReceiveObjectMessage:) name:RECEIVE_OBJECT_UPDATE_EVENT object:nil];
+}
+
+- (void) establishConnection {
+  tcp_client = [[BVTCPClient alloc] init];
+  [tcp_client establishConnection];
 }
 
 - (void) initMapView {
@@ -237,8 +248,8 @@
 {
   CLLocationCoordinate2D coordinate = newLocation.coordinate;
   [map_view setCenterCoordinate:coordinate animated:NO];
-  NSLog(@"latitude %f", coordinate.latitude);
-  NSLog(@"longitude %f", coordinate.longitude);
+  //NSLog(@"latitude %f", coordinate.latitude);
+  //NSLog(@"longitude %f", coordinate.longitude);
 
   MKCoordinateRegion zoom = map_view.region;
   zoom.span.latitudeDelta = 0.005;
@@ -255,6 +266,9 @@
     [locationManager startUpdatingLocation];
   } else {
   }
+	    [[NSNotificationCenter defaultCenter] postNotificationName:GO_TO_MAIN_MENU_EVENT
+								object:nil
+							      userInfo:nil];
 }
 
 /*
@@ -278,8 +292,12 @@ return (interfaceOrientation == UIInterfaceOrientationPortrait);
   // e.g. self.myOutlet = nil;
 }
 
+- (void) onReceiveObjectMessage:(NSNotification *)notification {
+  game_core->updateObjects((NSDictionary*)[notification userInfo]);
+}
 
 - (void)dealloc {
+  [tcp_client dealloc];
   [super dealloc];
 }
 

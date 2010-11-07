@@ -8,8 +8,17 @@
  */
 
 #import "Particle.h"
+#import <AVFoundation/AVFoundation.h>
 
 class Bomb : public Particle {
   public:
+    Bomb();
+    void add(float x, float y, float size, float moveX, float moveY);
     void update();
+    void blast();
+    void goOut();
+    Particle* particle[PARTICLE_COUNT];
+    int mode;
+    int modeStartFrame;
+    AVAudioPlayer* hitSound;
 };
